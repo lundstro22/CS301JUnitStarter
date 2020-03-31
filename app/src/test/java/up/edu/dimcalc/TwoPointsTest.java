@@ -39,13 +39,9 @@ public class TwoPointsTest {
     public void randomValue() {
         TwoPoints testPoints = new TwoPoints();
         testPoints.randomValue(0);
-        testPoints.randomValue(1);
         Point p1 = testPoints.getPoint(0);
-        Point p2 = testPoints.getPoint(1);
         assertTrue(p1.x > -10 && p1.x < 10);
         assertTrue(p1.y > -10 && p1.y < 10);
-        assertTrue(p2.x > -10 && p2.x < 10);
-        assertTrue(p2.y > -10 && p2.y < 10);
 
     }
 
@@ -64,17 +60,18 @@ public class TwoPointsTest {
         testPoints.setPoint(0,3,5);
         testPoints.copy(0,1);
         Point p1 = testPoints.getPoint(1);
-        assertTrue(p1.x == 3);
-        assertTrue(p1.y == 5);
+        assertEquals(3, p1.x);
+        assertEquals(5, p1.y);
     }
 
     @Test
     public void distance() {
         TwoPoints testPoints = new TwoPoints();
-        testPoints.setPoint(0,1,1);
-        testPoints.setPoint(1,3,3);
-        double result = testPoints.distance();
-        assertTrue(result > 2.7 && result < 2.9);
+        testPoints.setPoint(0,1,4);
+        testPoints.setPoint(1,3,2);
+        int result = testPoints.distance();
+        int testResult= (int)Math.sqrt(((1-3)*(1-3))+((4-2)*(4-2)));
+        assertEquals(testResult, result);
 
     }
 
@@ -85,7 +82,7 @@ public class TwoPointsTest {
         testPoints.setPoint(1,5,8);
         double result = testPoints.slope();
         double test = (8-2)/(5-1);
-       assertTrue(result == test);
+       assertEquals(test, result, 0.001);
 
     }
 }
