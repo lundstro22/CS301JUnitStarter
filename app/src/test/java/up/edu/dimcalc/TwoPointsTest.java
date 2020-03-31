@@ -69,9 +69,11 @@ public class TwoPointsTest {
         TwoPoints testPoints = new TwoPoints();
         testPoints.setPoint(0,1,4);
         testPoints.setPoint(1,3,2);
-        int result = testPoints.distance();
-        int testResult= (int)Math.sqrt(((1-3)*(1-3))+((4-2)*(4-2)));
-        assertEquals(testResult, result);
+        double result = testPoints.distance();
+        double testResult= Math.sqrt(((1-3)*(1-3))+((4-2)*(4-2)));
+        double num= testResult + 0.5;
+        int finalTestResult = (int) num;
+        assertEquals(finalTestResult, result, 0.000001);
 
     }
 

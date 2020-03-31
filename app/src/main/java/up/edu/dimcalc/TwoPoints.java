@@ -48,11 +48,13 @@ public class TwoPoints {
 
     /** calculates the distance between the two points rounded to the nearest integer */
     public int distance() {
-        int result = 0;
-        int xDiff = points[0].x - points[1].x;
-        int yDiff = points[0].y - points[1].y;
-        result = (int)Math.sqrt(xDiff*xDiff + yDiff*yDiff);
-        return result;
+        double result = 0;
+        double xDiff = points[0].x - points[1].x;
+        double yDiff = points[0].y - points[1].y;
+        result = Math.sqrt(xDiff*xDiff + yDiff*yDiff);
+        double calc= result + 0.5;
+        int finalResult=(int) calc;
+        return finalResult;
     }
 
     /** calculates the slope of a line passing through the two points
